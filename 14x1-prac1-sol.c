@@ -25,6 +25,18 @@ static link createNode(int item) {
     return new;
 }
 
+static link append(link head, link append) {
+    if (head == NULL) return append; // one line return.
+
+    // append to the end of a linked list
+    link curr = head;
+    while (curr->next != NULL) {
+        curr = curr->next;
+    }
+    curr->next = append;
+    return head;
+}
+
 static treelink createTreeNode(int item) {
     treelink new = malloc(sizeof(struct _tnode));
     new->item = item;
@@ -74,7 +86,7 @@ link deleteAtPosition(link head, int k) {
     return head;
 }
 
-ink insertAtPosition(link head, int k, link insert) {
+link insertAtPosition(link head, int k, link insert) {
     link prev = NULL;
     link curr = head;
     int i = 0;
@@ -96,7 +108,6 @@ ink insertAtPosition(link head, int k, link insert) {
 link insertInOrder(link head, link insert) {
     link prev = NULL;
     link curr = head;
-    int i = 0;
     while (curr != NULL && insert->item > head->item) { // condition changes: only if current insert node greater than head node
         prev = curr;
         curr = curr->next;
@@ -254,7 +265,25 @@ int isBST(treelink tree) {
     return isBSTR(tree, INT_MIN, INT_MAX);
 }
 
+link listFromTree(treelink tree, link list) {
+    if (tree == NULL) {
+        return list;
+    }
+    list = listFromTree(tree->left, list);
+    list = append(list, createNode(tree->item));
+    list = listFromTree(tree->right, list);
+    return list;
+}
 
+// copy a tree
+treelink copyTree(treelink tree) {
+    if (tree == NULL) {
+        return NULL;
+    }
+    tree->left = copyTree(tree->left);
+    tree->right = copyTree(tree->right);
+    return createTreeNode(tree->item);
+}
 
 /* ----------------- main --------------- */
 int main(int argc, char *argv[]) {
@@ -285,6 +314,13 @@ int main(int argc, char *argv[]) {
     assert(isBST(tree2)); // is a tree    
     assert(height(tree2) == 2);
     assert(countTreeNodes(tree2) == 3);
+
+    printf("test list from tree.\n");
+    link list1 = listFromTree(tree2, NULL);
+    assert(list1->item == 3);
+    assert(list1->next->item == 4);
+    assert(list1->next->next->item == 5);
+    assert(list1->next->next->next == NULL);
 
     printf("testing bad left subtree with extra height\n");    
     tree2->left->right->item = 6;
