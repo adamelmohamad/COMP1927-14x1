@@ -17,6 +17,9 @@ typedef struct _tnode {
     treelink right;
 } tnode;
 
+
+void printList(link head);
+
 /* --- static functions --- */
 static link createNode(int item) {
     link new = malloc(sizeof(struct _node));
@@ -186,10 +189,10 @@ link generateTotalSums(int k) {
     for (i = 1; i <= k; i++) {
         sum += i;
         if (curr == NULL) {
-            head = createNode(i);
+            head = createNode(sum);
             curr = head;
         } else {
-            curr->next = createNode(i);
+            curr->next = createNode(sum);
             curr = curr->next;
         }
     }
@@ -198,6 +201,7 @@ link generateTotalSums(int k) {
 
 link unionList(link list1, link list2) {
     // fun recursive solution
+    // CHANGES THE LIST
     if (list1 == NULL) {
         return list2;
     }
@@ -205,7 +209,7 @@ link unionList(link list1, link list2) {
         return list1;
     }
 
-    if (list1->item > list2->item) {
+    if (list1->item < list2->item) {
         // list1 is in place.
         // add next node of list1 as next
         list1->next = unionList(list1->next, list2);
@@ -218,7 +222,27 @@ link unionList(link list1, link list2) {
 }
 
 link intersectionList(link list1, link list2) {
-    return NULL; // incomplete
+    // DOES NOT CHANGE THE LIST
+    link curr = NULL;
+    link head = NULL;
+    while (list1 != NULL && list2 != NULL) { 
+        if (list1->item < list2->item) {
+            list1 = list1->next;
+        } else if (list1->item > list2->item) {
+            list2 = list2->next;
+        } else {
+            if (curr == NULL) {
+                curr = createNode(list1->item);
+                head = curr;
+            } else {
+                curr->next = createNode(list1->item);
+                curr = curr->next;
+            }
+            list1 = list1->next;
+            list2 = list2->next;
+        }
+    }
+    return head;
 }
 
 link zipList(link list1, link list2) {
@@ -331,6 +355,20 @@ link listFromTree(treelink tree, link list) {
     return list;
 }
 
+link listFromTreeFaster(treelink tree, link list) {
+    if (tree == NULL) {
+        return list;
+    }    
+    list = listFromTreeFaster(tree->right, list);
+
+    link temp = createNode(tree->item);
+    temp->next = list;
+    list = temp;
+
+    list = listFromTreeFaster(tree->left, list);
+    return list;
+}
+
 // copy a tree
 treelink copyTree(treelink tree) {
     if (tree == NULL) {
@@ -342,6 +380,17 @@ treelink copyTree(treelink tree) {
 }
 
 /* ----------------- main --------------- */
+// debug
+void printList(link head) {
+    link curr = head;
+    while (curr != NULL) {
+        printf("[%d]->", curr->item);
+        curr = curr->next;
+    }
+    printf("[X]\n");
+
+}
+
 int main(int argc, char *argv[]) {
     treelink tree1 = NULL;
     printf("testing null tree\n");
@@ -378,15 +427,36 @@ int main(int argc, char *argv[]) {
     assert(list1->next->next->item == 5);
     assert(list1->next->next->next == NULL);
 
+    list1 = listFromTreeFaster(tree2, NULL);
+    assert(list1->item == 3);
+    assert(list1->next->item == 4);
+    assert(list1->next->next->item == 5);
+    assert(list1->next->next->next == NULL);
+
     printf("testing bad left subtree with extra height\n");    
     tree2->left->right->item = 6;
     assert(!isBST(tree2)); // deliberate fail - isBST ignorant way fails this
 
     printf("testing unionlist\n");
     link list2 = generateTotalSums(3);
-    link list3 = generateTotalSums(5);
+    link list3 = generateTotalSums(2);
     list3->next->item = 4;
     link list4 = unionList(list2, list3);
-    
+    assert(countNodes(list4) == 5);
+    assert(list4->item == 1);
+    assert(list4->next->item == 1);
+    assert(list4->next->next->item == 3);
+    assert(list4->next->next->next->item == 4);
+    assert(list4->next->next->next->next->item == 6);
+    assert(list4->next->next->next->next->next == NULL);
+
+    printf("TEST INTERSECTION\n");
+    list2 = generateTotalSums(3);
+    list3 = generateTotalSums(2);
+    list4 = intersectionList(list2, list3);
+    assert(list4->item == 1);
+    assert(list4->next->item == 3);
+    assert(list4->next->next == NULL);  
+
     return EXIT_SUCCESS;
 }
