@@ -173,6 +173,9 @@ link frontToBack(link head) {
 }
 
 
+/* ----------------- advanced list ---------------- */
+
+
 /* ----------------- basic tree ---------------- */
 int countTreeNodes(treelink tree) {
     if (tree == NULL)  {
