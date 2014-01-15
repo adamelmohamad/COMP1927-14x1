@@ -315,7 +315,7 @@ int countLeaves(treelink tree) {
 // helper recursive for height
 int heightR(treelink tree) {
     if (tree == NULL) {
-        return 0;
+        return -1;
     }
     // find height of left and right
     int left = heightR(tree->left);
@@ -325,9 +325,8 @@ int heightR(treelink tree) {
 }
 
 int height(treelink tree) {
-    int actualHeight = heightR(tree) - 1;
-    // remember, 0 is base height
-    return actualHeight >= 0 ? actualHeight : 0;
+    // -1 is NULL, 0 is base tree
+    return  heightR(tree) - 1;
 }
 
 treelink deleteLargest(treelink tree) {
