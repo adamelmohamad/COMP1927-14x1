@@ -178,7 +178,26 @@ link frontToBack(link head) {
 
 /* ----------------- advanced list ---------------- */
 link maxToFront(link head) {
-    return NULL; // inomplete
+    link curr = head;
+    link prev = NULL;
+
+    link max = head;
+    link maxPrev = NULL;
+
+    while (curr != NULL) {
+        if (curr->item > max->item) {
+            max = curr;
+            maxPrev = prev;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+    if (maxPrev != NULL) {
+        maxPrev->next = max->next;
+        max->next = head;
+        head = max;
+    }
+    return head;
 }
 
 link generateTotalSums(int k) {
@@ -246,11 +265,33 @@ link intersectionList(link list1, link list2) {
 }
 
 link zipList(link list1, link list2) {
-    return NULL; // incomplete
+    // apped the rest as necessary
+    if (list1 == NULL) {
+        return list2;
+    }
+    if (list2 == NULL) {
+        return list1;
+    }
+    list1->next = zipList(list2, list1->next); // special zip!
+    return list1;
 }
 
 link removeConsecutiveDuplicates(link head) {
-    return NULL; // incomplete
+    // does not free missing node.
+    link curr = head;
+    link prev = NULL;
+    while (curr != NULL) {
+        if (prev != NULL && curr->item == prev->item) {
+            // if equal previous, screw over
+            prev->next = curr->next;            
+        } else {
+            // not equal previous, so we move previous
+            prev = curr;
+        }
+        // move along
+        curr = curr->next;
+    }
+    return head;
 }
 
 /* ----------------- basic tree ---------------- */
@@ -449,6 +490,14 @@ int main(int argc, char *argv[]) {
     assert(list4->next->next->next->item == 4);
     assert(list4->next->next->next->next->item == 6);
     assert(list4->next->next->next->next->next == NULL);
+
+    printf("Testing remove removeConsecutiveDuplicates\n");
+    list4 = removeConsecutiveDuplicates(list4);
+    assert(list4->item == 1);
+    assert(list4->next->item == 3);
+    assert(list4->next->next->item == 4);
+    assert(list4->next->next->next->item == 6);
+    assert(list4->next->next->next->next == NULL);
 
     printf("TEST INTERSECTION\n");
     list2 = generateTotalSums(3);
