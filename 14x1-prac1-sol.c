@@ -174,7 +174,60 @@ link frontToBack(link head) {
 
 
 /* ----------------- advanced list ---------------- */
+link maxToFront(link head) {
+    return NULL; // inomplete
+}
 
+link generateTotalSums(int k) {
+    int sum = 0;
+    int i;
+    link curr = NULL;
+    link head = NULL;
+    for (i = 1; i <= k; i++) {
+        sum += i;
+        if (curr == NULL) {
+            head = createNode(i);
+            curr = head;
+        } else {
+            curr->next = createNode(i);
+            curr = curr->next;
+        }
+    }
+    return head;
+}
+
+link unionList(link list1, link list2) {
+    // fun recursive solution
+    if (list1 == NULL) {
+        return list2;
+    }
+    if (list2 == NULL) {
+        return list1;
+    }
+
+    if (list1->item > list2->item) {
+        // list1 is in place.
+        // add next node of list1 as next
+        list1->next = unionList(list1->next, list2);
+        return list1; 
+    } else {
+        // otherwise, do the opposite.
+        list2->next = unionList(list1, list2->next);
+        return list2;
+    }
+}
+
+link intersectionList(link list1, link list2) {
+    return NULL; // incomplete
+}
+
+link zipList(link list1, link list2) {
+    return NULL; // incomplete
+}
+
+link removeConsecutiveDuplicates(link head) {
+    return NULL; // incomplete
+}
 
 /* ----------------- basic tree ---------------- */
 int countTreeNodes(treelink tree) {
@@ -329,5 +382,11 @@ int main(int argc, char *argv[]) {
     tree2->left->right->item = 6;
     assert(!isBST(tree2)); // deliberate fail - isBST ignorant way fails this
 
+    printf("testing unionlist\n");
+    link list2 = generateTotalSums(3);
+    link list3 = generateTotalSums(5);
+    list3->next->item = 4;
+    link list4 = unionList(list2, list3);
+    
     return EXIT_SUCCESS;
 }
