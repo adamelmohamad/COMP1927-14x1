@@ -74,6 +74,93 @@ link deleteAtPosition(link head, int k) {
     return head;
 }
 
+ink insertAtPosition(link head, int k, link insert) {
+    link prev = NULL;
+    link curr = head;
+    int i = 0;
+    while (curr != NULL && i < k) {
+        prev = curr;
+        curr = curr->next;
+    }
+    // inserting at beginning
+    if (prev == NULL) {
+        insert->next = curr; // will adjust null automagically.
+        return insert;
+    }
+    // otherwise, insert at position
+    prev->next = insert;
+    insert->next = curr; // curr is wherever we're now going
+    return head; 
+}
+
+link insertInOrder(link head, link insert) {
+    link prev = NULL;
+    link curr = head;
+    int i = 0;
+    while (curr != NULL && insert->item > head->item) { // condition changes: only if current insert node greater than head node
+        prev = curr;
+        curr = curr->next;
+    }
+
+    // this is the same!
+
+
+    // inserting at beginning
+    if (prev == NULL) {
+        insert->next = curr; // will adjust null automagically.
+        return insert;
+    }
+    // otherwise, insert at position
+    prev->next = insert;
+    insert->next = curr; // curr is wherever we're now going
+    return head; 
+}
+
+link reverse(link head) {
+    link curr, prev, temp;
+    curr = head;
+    prev = NULL;
+    while (curr != NULL) {
+        temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+    }
+    return prev;
+}
+
+link backToFront(link head) {
+    // empty and 1 item list are the same
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    link curr = head;
+    link prev = NULL;
+    while (curr->next != NULL) { // find last node
+        prev = curr;
+        curr = curr->next;
+    }
+    prev->next = NULL;
+    curr->next = head;
+    return curr;
+}
+
+link frontToBack(link head) {
+    // empty and 1 item list are the same
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    link second = head->next; // need second one
+    link curr = head;
+    while (curr->next != NULL) {
+        curr = curr->next;
+    }    
+    curr->next = head;
+    head->next = NULL;
+    return second;
+}
+
 
 /* ----------------- basic tree ---------------- */
 int countTreeNodes(treelink tree) {
@@ -166,6 +253,8 @@ int isBSTR(treelink tree, int min, int max) {
 int isBST(treelink tree) {
     return isBSTR(tree, INT_MIN, INT_MAX);
 }
+
+
 
 /* ----------------- main --------------- */
 int main(int argc, char *argv[]) {
