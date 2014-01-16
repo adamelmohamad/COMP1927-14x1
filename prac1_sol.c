@@ -38,18 +38,12 @@ void append(list l1, list l2) { // note this is a STRUCT with a pointer to first
 }
 
 // isDegenerate was in the questions I gave!
-
-// prune tree
-// we need to store our current level! store in curr
-treelink pruneTreeR(tree root, int level, int curr) {
-    if (curr >= level) { // level too big!
+/* WAY #1 */
+treelink pruneTree(tree root, int depth) {
+    if (curr <= 0) { // level too big!
         return NULL;
     }
-    root->left = pruneTreeR(root->left, level, curr + 1);
-    root->right = pruneTreeR(root->right, level, curr + 1);
+    root->left = pruneTree(root->left, level - 1);
+    root->right = pruneTree(root->right, level - 1);
     return root;
-}
-
-treelink pruneTree(tree root, int level) {
-    return pruneTreeR(root, level, 0);
 }
