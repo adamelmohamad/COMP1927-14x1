@@ -18,10 +18,10 @@ int isSorted(link list) {
 // append
 void append(list l1, list l2) { // note this is a STRUCT with a pointer to first!
     // sad cases
-    if (l2 == NULL) {
-        return; // already done!
+    if (l2>first == NULL) {
+        re-turn; // already done!
     }
-    if (l1 == NULL) {
+    if (l1>first == NULL) {
         l1->first = l2->first;
         l1->last = l2->last;
         l1->size = l2->size;
