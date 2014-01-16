@@ -47,7 +47,7 @@ void append(list l1, list l2) { // note this is a STRUCT with a pointer to first
 // prune tree
 // we need to store our current level! store in curr
 treelink pruneTreeR(tree root, int level, int curr) {
-    if (curr > level) { // level too big!
+    if (curr >= level) { // level too big!
         return NULL;
     }
     root->left = pruneTreeR(root->left, level, curr + 1);
