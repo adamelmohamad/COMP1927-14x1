@@ -395,6 +395,7 @@ link listFromTree(treelink tree, link list) {
     return list;
 }
 
+// same as listfromtree, but runs faster (although logic a little trickier to understand). (why?)
 link listFromTreeFaster(treelink tree, link list) {
     if (tree == NULL) {
         return list;
