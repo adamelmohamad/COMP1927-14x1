@@ -13,6 +13,7 @@ int isSorted(link list) {
 }
 
 // SUMS WAS IN THE QUESTIONS I GAVE
+// NO LOOPS O(1)!!!
 
 // append
 void append(list l1, list l2) { // note this is a STRUCT with a pointer to first!
@@ -25,14 +26,8 @@ void append(list l1, list l2) { // note this is a STRUCT with a pointer to first
         l1->last = l2->last;
         l1->size = l2->size;
     } else {
-        link curr = l2->first;
-        
-        while (curr->next != NULL) {
-            curr = curr->next;
-        }
-        
-        l1->last = curr; // in which case, it equals to the last of the other one
-        curr->next = l1->first; // bridge the gap
+        l1->last = l2->last; // in which case, it equals to the last of the other one
+        l2->last->next = l1->first; // bridge the gap
         l1->first = l2->first; // first changes    
         l1->size = l1->size + l2->size;
     }
