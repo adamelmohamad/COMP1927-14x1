@@ -16,24 +16,26 @@ int isSorted(link list) {
 
 // append
 void append(list l1, list l2) { // note this is a STRUCT with a pointer to first!
+    // sad cases
     if (l2 == NULL) {
         return; // already done!
     }
-    link curr = l2->first;
-    
-    while (curr->next != NULL) {
-        curr = curr->next;
-    }
-    
-    // l1 last is same UNLESS l1 is NULL
-    if (l1->last == NULL) {
+    if (l1 == NULL) {
+        l1->first = l2->first;
+        l1->last = l2->last;
+        l1->size = l2->size;
+    } else {
+        link curr = l2->first;
+        
+        while (curr->next != NULL) {
+            curr = curr->next;
+        }
+        
         l1->last = curr; // in which case, it equals to the last of the other one
+        curr->next = l1->first; // bridge the gap
+        l1->first = l2->first; // first changes    
+        l1->size = l1->size + l2->size;
     }
-    
-    curr->next = l1->first;
-    l1->first = l2->first;
-    
-    l1->size = l1->size + l2->size;
     // l2 changes
     l2->first = NULL;
     l2->last = NULL;
