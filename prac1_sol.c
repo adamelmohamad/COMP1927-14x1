@@ -40,6 +40,9 @@ void append(list l1, list l2) { // note this is a STRUCT with a pointer to first
 // isDegenerate was in the questions I gave!
 /* WAY #1 */
 treelink pruneTree(tree root, int depth) {
+    if (root == NULL) {
+        return NULL;
+    }
     if (curr <= 0) { // level too big!
         return NULL;
     }
