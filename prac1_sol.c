@@ -1,7 +1,7 @@
 // isSorted
 int isSorted(link list) {
     link curr = list;
-    link prev != NULL;
+    link prev = NULL;
     while (curr != NULL) {
         if (prev != NULL) { // only check if we have prev
             if (curr->item < prev->item) {
@@ -45,7 +45,7 @@ void freeTree(tree root) {
     }
     freeTree(root->left);
     freeTree(root->right);
-    free)root);
+    free(root);
 }
 
 treelink pruneTree(tree root, int depth) {
