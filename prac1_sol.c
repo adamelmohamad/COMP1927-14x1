@@ -45,7 +45,7 @@ void freeTree(tree root) {
     }
     freeTree(root->left);
     freeTree(root->right);
-    return root;
+    free)root);
 }
 
 treelink pruneTree(tree root, int depth) {
