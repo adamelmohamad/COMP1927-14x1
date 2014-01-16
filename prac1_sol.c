@@ -39,11 +39,21 @@ void append(list l1, list l2) { // note this is a STRUCT with a pointer to first
 
 // isDegenerate was in the questions I gave!
 /* WAY #1 */
+void freeTree(tree root) {
+    if (root == NULL) {
+        return;
+    }
+    freeTree(root->left);
+    freeTree(root->right);
+    return root;
+}
+
 treelink pruneTree(tree root, int depth) {
     if (root == NULL) {
         return NULL;
     }
     if (curr <= 0) { // level too big!
+        freeTree(root); // free the rest
         return NULL;
     }
     root->left = pruneTree(root->left, level - 1);
