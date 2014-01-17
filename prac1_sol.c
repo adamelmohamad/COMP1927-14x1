@@ -13,13 +13,13 @@ int isSorted(link list) {
 }
 
 // SUMS WAS IN THE QUESTIONS I GAVE
-// NO LOOPS O(1)!!!
 
 // append
+// NO LOOPS O(1)!!!
 void append(list l1, list l2) { // note this is a STRUCT with a pointer to first!
     // sad cases
     if (l2>first == NULL) {
-        re-turn; // already done!
+        return; // already done!
     }
     if (l1>first == NULL) {
         l1->first = l2->first;
