@@ -12,7 +12,7 @@ int isSorted(link list) {
     return 1;
 }
 
-// SUMS WAS IN THE QUESTIONS I GAVE
+// SUMS WAS IN THE QUESTIONS I GAVE - see generateTotalSums
 
 // append
 // NO LOOPS O(1)!!!
