@@ -12,7 +12,7 @@ int isSorted(link list) {
     return 1;
 }
 
-// SUMS WAS IN THE QUESTIONS I GAVE
+// SUMS WAS IN THE QUESTIONS I GAVE - see generateTotalSums
 
 // append
 // NO LOOPS O(1)!!!
@@ -56,7 +56,7 @@ treelink pruneTree(tree root, int depth) {
         freeTree(root); // free the rest
         return NULL;
     }
-    root->left = pruneTree(root->left, level - 1);
-    root->right = pruneTree(root->right, level - 1);
+    root->left = pruneTree(root->left, depth - 1);
+    root->right = pruneTree(root->right, depth - 1);
     return root;
 }
