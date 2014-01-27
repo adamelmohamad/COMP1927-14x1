@@ -134,6 +134,7 @@ int partition(int a[], int left, int right, int mode) {
     // now we have an appropriate pivot in a[r]
     int pivot = a[right];
     
+    // proper version of quicksort
     for (i = left; i < right; i++) {
         if (a[i] <= pivot) {
             swap(&(a[i]), &(a[swapIndex]));
