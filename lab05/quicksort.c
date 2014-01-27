@@ -123,10 +123,7 @@ void quicksort(int a[], int left, int right, int mode) {
 }
 
 int partition(int a[], int left, int right, int mode) {
-    int i, j;
-    
-    i = left - 1;
-    j = right;
+    int i, swapIndex = left;
     
     if (mode == RANDOM_PIVOT) {
         // get random element
@@ -137,25 +134,17 @@ int partition(int a[], int left, int right, int mode) {
     // now we have an appropriate pivot in a[r]
     int pivot = a[right];
     
-    // pivot element
-    while (TRUE) {
-        // increment i until we approach the element that shouldnt be in pivot
-        while (a[++i] < pivot);
-        // get the element towards the right
-        while (pivot < a[--j] && j != left);
-        
-        // if the left hand counter is greater than the right, we stop
-        if (i >= j) {
-            break;
+    for (i = left; i < right; i++) {
+        if (a[i] <= pivot) {
+            swap(&(a[i]), &(a[swapIndex]));
+            swapIndex++;
         }
-        // now we swap elements
-        swap(&(a[i]), &(a[j]));    
-    }   
-    
+    }
+        
     // place the pivot
-    swap(&(a[i]), &(a[right]));
+    swap(&(a[swapIndex]), &(a[right]));
     // return the pivot index
-    return i;
+    return swapIndex;
 }
 
 void swap(int *a, int *b) {
