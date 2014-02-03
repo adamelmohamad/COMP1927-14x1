@@ -1,0 +1,77 @@
+Questions today proudly brought to you by a text document.
+
+The new questions introduced have all been asked from a Prac exam by Angela before.
+
+== Practicing Theory Sorts ==
+Basically know how to differentiate between selection, bubble, insertion, merge and quicksort, given timing data and stability and case insensitive words.
+
+You should be able to answer questions like:
+- How do I differentiate between selection, bubble and mergesort?
+- How do I differentiate between quicksort median of three, merge sort and insertion sort?
+
+== Practicing Heaps ==
+Go through the tutorial questions. Learn how to:
+- add to a heap
+- remove from a heap
+
+== Practicing Lists ==
+
+Go through the previous questions I've given, but use this struct implementation:
+
+typedef struct _list *List;
+typedef struct _node *link;
+typedef struct _list {
+    link first;
+    link last;
+    int size;
+} list;
+
+typedef struct _node {
+    int data;
+    link next;
+} node;
+
+Here are some other questions:
+- write a function "List partition(List original, int data)", which takens in an original list, and returns a list of all items bigger than the original list whilst keeping any items less than the original list in the original list. e.g. on [1]->[2]->[8]->[4], partition(original, 4) will give us [1]->[4] as the original list and returns a new list [2]->[8]
+- write a function "void selectionSort(List original)" (hint: minToFront recursively)
+
+== Practicing Trees ==
+Go through the previous questions I've given, but use this struct implementation:
+
+typedef struct _tree *Tree;
+typedef struct _tnode *treelink;
+
+typedef struct _tree {
+    treelink root;
+} Tree;
+
+typedef struct _tnode {
+    treelink left;
+    treelink right;
+    int data;
+} tnode;
+
+== Practicing Graphs ==
+Write your own Graph ADT for Adjacency Matrix and Adjacency List. Then try the questions below in both implemenations (or use lab6/7 code):
+
+= Graphs =
+- Write a function "int hasEulerCircuit(Graph g)", that returns whether there is an Euler Circuit in a graph.
+- Write a function "int canReach(Graph g, Vertex v, Vertex w)", which indicates whether vertex v connects to vertex w
+- Write a function "int getDegrees(Graph g)", which returns the number of degrees in a Graph.
+
+= Graph Search = 
+- Given lab6 already has "dfsSearch" implemented, write a function "void printAllPaths(Graph g)" that uses the "st" array to print all paths from the original node dfs'd from to that node. Note this question covers all graph search questions I've seen besides code your own bfs/dfs, which is never asked.
+
+Example:
+  2--3
+ /    
+ 1---4
+  \ /
+   0
+
+after dfsSearch from 0 and the fnction is called prints:
+0-0
+0-1
+0-1 1-2
+0-1 1-2 2-3
+0-1 1-4
