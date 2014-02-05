@@ -32,7 +32,7 @@ typedef struct _node {
 } node;
 
 Here are some other questions:
-- write a function "List partition(List original, int data)", which takens in an original list, and returns a list of all items bigger than the original list whilst keeping any items less than the original list in the original list. e.g. on [1]->[2]->[8]->[4], partition(original, 4) will give us [1]->[4] as the original list and returns a new list [2]->[8]
+- write a function "List partition(List original, int data)", which takens in an original list, and returns a list of all items bigger than the original list whilst keeping any items less than the original list in the original list. e.g. on [1]->[2]->[8]->[4], partition(original, 4) will give us [1]->[2] as the original list and returns a new list [8]->[4]
 - write a function "void selectionSort(List original)" (hint: minToFront recursively)
 
 == Practicing Trees ==
@@ -57,10 +57,10 @@ Write your own Graph ADT for Adjacency Matrix and Adjacency List. Then try the q
 = Graphs =
 - Write a function "int hasEulerCircuit(Graph g)", that returns whether there is an Euler Circuit in a graph.
 - Write a function "int canReach(Graph g, Vertex v, Vertex w)", which indicates whether vertex v connects to vertex w
-- Write a function "int getDegrees(Graph g)", which returns the number of degrees in a Graph.
+- Write a function "int getDegrees(Graph g, int j)", which returns the number of degrees in a node of the Graph.
 
 = Graph Search = 
-- Given lab6 already has "dfsSearch" implemented, write a function "void printAllPaths(Graph g)" that uses the "st" array to print all paths from the original node dfs'd from to that node. Note this question covers all graph search questions I've seen besides code your own bfs/dfs, which is never asked.
+- Given lab6 already has "dfsSearch" implemented, write a function "void printAllPaths(Graph g)" that uses the "st" array to print all paths from the original node dfs'd from to that node. Note this question covers all graph search questions I've seen besides code your own bfs/dfs - which can be asked (just know where to use pre/st).
 
 Example:
   2--3
