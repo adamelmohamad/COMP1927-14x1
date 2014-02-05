@@ -49,7 +49,7 @@ List partition(List original, int data) {
         curr = curr->next;
     }
     // make sure original last is right
-    greaterThan->last = prev;
+    original->last = prev;
     return greaterThan;
 }
 
