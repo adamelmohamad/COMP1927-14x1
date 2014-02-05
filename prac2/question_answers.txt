@@ -41,8 +41,8 @@ List partition(List original, int data) {
             }
             greaterThan->last->next = curr;
             greaterThan->last = curr;
-            greaterThan->size--;
-            original->size++;
+            greaterThan->size++;
+            original->size--;
         } else {
             prev = curr; // only update prev if its not partioned
         }
