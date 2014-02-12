@@ -52,6 +52,9 @@ List partition(List original, int data) {
     }
     // make sure original last is right
     original->last = prev;
+    original->last->next = NULL;
+    greaterThan->last->next = NULL;
+    
     return greaterThan;
 }
 
