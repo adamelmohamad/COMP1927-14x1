@@ -38,15 +38,15 @@ List partition(List original, int data) {
             // change first as necessary
             if (greaterThan->first == NULL) {
                 greaterThan->first = curr;
-                greaterThan->last = curr;
             } else {
+                // otherwise, set the next one
                 greaterThan->last->next = curr;
             }
             greaterThan->last = curr;
             greaterThan->size++;
             original->size--;
         } else {
-            prev = curr; // only update prev if its not partioned
+            prev = curr; // only update prev if its not partitioned
         }
         curr = curr->next;
     }
