@@ -1,0 +1,11 @@
+12. (9 marks)
+Insert the following numbers into a Hash Table:
+5 29 32 0 31 20 23 44 19
+using the hash:
+k % 13
+
+a) seperate chaining
+
+b) linear probing
+
+c) double hashing (with double hash 7 - (k % 7))

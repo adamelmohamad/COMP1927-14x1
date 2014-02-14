@@ -1,0 +1,10 @@
+15. (9 marks)
+Type "display 15.png" in terminal.
+Using this image, show step by step the st and dist array by using:
+
+a) Dijkstra's Algorithm, from S on the graph
+With the information from st, what is the shortest path from S to D?
+With the information from st, what is the shortest path from F to B?
+
+b) Prim's Algorithm, from A on the graph
+What is the total cost?

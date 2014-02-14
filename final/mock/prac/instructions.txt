@@ -1,0 +1,12 @@
+q17-21
+45 marks
+
+compile with test files. note they do not test everything.
+
+===========
+
+17. partition.c (/10)
+18. trimTree.c (/10)
+19. eulerPath.c (/10)
+20. heightBalance.c (/10)
+21. isMinHeap.c (/5)

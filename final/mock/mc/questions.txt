@@ -1,0 +1,130 @@
+Multiple Choice
+10 marks
+
+appropriately label in this document what your answer is.
+
+=================
+
+
+1) What is the following:
+         20
+        /  \
+       19  15
+      /  \   \
+     8   10   14
+
+a) a binary search tree
+b) a min-heap
+c) a max-heap
+d) none of the above
+
+=================
+
+2) I have used a sort which I only know the program of that sorted "aa bb aA bB AA dd cC" into "aa aA AA bb bB cC dd" in <0.01ms, given 'a' and 'A' are treated equally. What can I conclude about this sort?
+
+a) it is stable
+b) it can sort in nlog(n) time
+c) my machine runs an i7
+d) none of the above
+
+=================
+
+3) What is the height of this tree:
+
+     2
+    / \
+   1   8
+      /
+      6
+
+a) 1
+b) 2
+c) 3
+d) none of the above
+
+
+=================
+
+4) What is the order I would traverse the following Graph in a Breadth First Search from 1, holding preference over low numbers?
+
+   0 --- 1
+  /       \
+ 2 ------- 3
+  \
+   4 --- 5
+
+a) 1 0 3 2 4 5
+b) 1 0 2 3 1 (3) (2) 4 5
+c) 1 2 3 4 5
+d) all the paths above are incorrect
+
+=================
+
+5) I wish to implement a priority queue ADT, which acts as a queue, except when adding a number with a higher priority, it gets preference. For example, if I had the priority queue "1 4 5" and added 3, it would become "1 3 4 5". What is the most appropriate data structure?
+
+a) a linked list
+b) a tree
+c) a graph
+d) a heap
+
+=================
+
+6) What is the worst case complexity of the following algorithm?
+
+int i, j;
+for (i = 0; i < size; i++) {
+    int m = 0;
+    
+    for (j = 0; j < size - i; j++) {
+        if (array[j] > array[m]) {
+            m = j;
+        }  
+    }
+    
+    swap(&(array[size-1-i]), &(array[m]));
+}
+
+a) O(n)
+b) O(nlog(n))
+c) O(n^2)
+d) O(1)
+
+=================
+
+7) Which of the following best determines the problem with using a Hash Table?
+a) it is hard to implement in real life practice
+b) all hash tables takes up too much space in memory to store an indefinite amount of elements
+c) the hash function must be exceedingly great so that items using the hash with collisions are negligible 
+d) nah man, hash tables ftw
+
+=================
+
+8) What order is the following tree tranversed if the output is: 10 5 7 15 12 11 14 22
+      10
+    /   \
+   5     15
+    \   /  \
+     7  12  22
+        / \ 
+       11 14
+
+a) in-order
+b) post-order
+c) depth first search
+d) none of the above
+
+=================
+
+9) Which of the following is impossible to do in polynomial time?
+a) find whether a graph has an Euler path
+b) find whether a graph has an Hamilton path
+c) find the n-th fibonacci number
+d) find the factorial of a certain number
+
+=================
+
+10) I have eight numbers to complete a Merge Sort. How many comparisons will occur?
+a) nlog(n)
+b) 64
+c) 24
+d) 8

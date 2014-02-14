@@ -1,0 +1,4 @@
+11. (5 marks)
+Anti-JBland is a series of small islands. These are each small blocks of land which contain sea between them, which distance varies across one island to another. Justin Bieber, as punishment for graffitiing the walls of Queensland, is now forced to build a series of road bridges to connect these islands. As he is a cheap asian, he desires that minimal amount of bridge distance to be built, whilst connected the entire island.
+
+How should he do this in the most effective manner?

@@ -1,0 +1,2 @@
+13. (10 marks)
+How would you differentiate between a naive bubble sort, bubble sort with early exit, insertion sort, quick sort (median of three pivot) and selection sort, given a bunch of strings with case insensitivity (i.e. 'a' and 'A' are the same)

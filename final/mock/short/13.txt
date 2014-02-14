@@ -1,0 +1,8 @@
+13. insert the following numbers into (7 marks)
+10 11 12 13 14 8 20 1 
+
+a) a binary search tree normally
+
+b) root insertion
+
+c) a splay tree
